@@ -6,7 +6,7 @@ export default async function About() {
 
     return (
         <section className="about-section" >
-            <div className="container max-w-6xl mx-auto py-16 px-6">
+            <div className="container max-w-6xl mx-auto py-12 px-6">
                 <div className="flex -mx-6">
                     {abouts.map((about) => (
                         <article key={about.id} className="flex-1 mx-6">

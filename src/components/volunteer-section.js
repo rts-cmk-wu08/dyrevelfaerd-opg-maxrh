@@ -1,14 +1,14 @@
 import Image from 'next/image'
 
-export default async function volunteer() {
+export default async function Volunteer() {
 
     const response = await fetch('http://localhost:4000/api/v1/volunteers')
 	const volunteers = await response.json()
     
     return (
         <section className="about-section bg-blue-100">
-            <div className="container max-w-6xl mx-auto py-16 px-6">
-            <h1 className="text-3xl mb-12 text-blue-900">Bliv frivillig</h1>
+            <div className="container max-w-6xl mx-auto py-12 px-6">
+            <h1 className="text-3xl mb-10 text-blue-900">Bliv frivillig</h1>
 
                 <div className="flex -mx-4">
                     {volunteers.map((volunteer) => (

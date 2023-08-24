@@ -1,7 +1,8 @@
-import Volunteer from '@/components/volunteer-section';
-import About from '@/components/about-section';
+import Volunteer from '@/components/volunteer-section'
+import About from '@/components/about-section'
 import Hero from '@/components/hero-section'
-import Image from 'next/image'
+import Footer from '@/components/footer'
+
 
 export default async function Home() {
 
@@ -15,6 +16,7 @@ export default async function Home() {
 			<Hero data={heroSection} />
 			<About />
 			<Volunteer />
+			<Footer />
 
 		</main>
 	)
