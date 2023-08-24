@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-export default function Hero({ data }) {
+export default function Rescue({ data }) {
 
     const title = data.title
     const content = data.content
