@@ -1,8 +1,22 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Oswald, Poppins } from 'next/font/google'
 import Header from '@/components/header'
 
-const inter = Inter({ subsets: ['latin'] })
+const oswald = Oswald({ 
+	weight: ['500', '600'],
+	styles: ['normal'],
+	variable: '--font-oswald',
+	subsets: ['latin'],
+	display: 'swap',
+})
+
+const poppins = Poppins({ 
+	weight: ['400', '500', '600', '700'],
+	styles: ['normal', 'italic'],
+	variable: '--font-poppins',
+	subsets: ['latin'],
+	display: 'swap',
+})
 
 export const metadata = {
 	title: 'Create Next App',
@@ -11,10 +25,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en">
-			<body className={inter.className}>
+		<html lang="en" className={`${oswald.variable} ${poppins.variable}`}>
+			<body >
 				<Header />
-
 				{children}
 			</body>
 		</html>
