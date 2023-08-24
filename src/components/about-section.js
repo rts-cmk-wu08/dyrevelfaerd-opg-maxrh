@@ -10,8 +10,8 @@ export default async function About() {
                 <div className="flex -mx-6">
                     {abouts.map((about) => (
                         <article key={about.id} className="flex-1 mx-6">
-                            <h1 className="text-2xl mb-3">{about.title}</h1>
-                            <p className="text-sm/relaxed">{about.content}</p>
+                            <h1 className="text-3xl mb-6 text-blue-900">{about.title}</h1>
+                            <p className="text-sm mb-6 whitespace-pre-wrap">{about.content}</p>
                         </article>
                     ))}
                 </div>

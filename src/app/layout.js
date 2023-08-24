@@ -3,7 +3,7 @@ import { Oswald, Poppins } from 'next/font/google'
 import Header from '@/components/header'
 
 const oswald = Oswald({ 
-	weight: ['500', '600'],
+	weight: ['400'],
 	styles: ['normal'],
 	variable: '--font-oswald',
 	subsets: ['latin'],
@@ -26,7 +26,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${oswald.variable} ${poppins.variable}`}>
-			<body >
+			<body>
 				<Header />
 				{children}
 			</body>
