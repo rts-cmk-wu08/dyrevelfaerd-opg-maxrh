@@ -25,7 +25,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" className={`${oswald.variable} ${poppins.variable}`} suppressHydrationWarning>
+		<html lang="en" className={`${oswald.variable} ${poppins.variable}`}>
 			<body>
 				<Header />
 				{children}

@@ -1,7 +1,6 @@
 "use client"
 
 import { useForm } from 'react-hook-form'
-import FormError from './formError';
 
 const NewsletterForm = () => {
 
@@ -9,18 +8,16 @@ const NewsletterForm = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm()
 
-    const onSubmit = (data) => {
-        console.log(data); // Log the form data here
-    };
-   
+    const onSubmit = (data) => console.log(data)
+
     return (
         <div className="w-full max-w-sm ml-auto">
-            <form onSubmit={handleSubmit(onSubmit)} className="text-sm ">
+            <form onSubmit={handleSubmit(onSubmit)} className="text-sm">
                 <div className="">
                     <input
-                        type="email"
+                        type="text"
                         placeholder="Email"
                         className="shadow appearance-none border border-blue-300 rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                         {...register('email', {
@@ -28,7 +25,7 @@ const NewsletterForm = () => {
                             pattern: { value: /.+@.+/, message: 'Invalid Email' },
                         })}
                     />
-                    {errors.email && <FormError message={errors.email.message} />}
+                    {errors.email && <p className="text-red-500 text-xs italic mb-4">{errors.email?.message}</p>}
                 </div>
                 <div className="mb-4">
                     <input
@@ -40,7 +37,7 @@ const NewsletterForm = () => {
                             minLength: { value: 2, message: 'Too Short' },                        
                         })}
                     />
-                    {errors.name && <FormError message={errors.name.message} />}
+                    {errors.name && <p className="text-red-500 text-xs italic mb-4">{errors.name?.message}</p>}
                 </div>
                 <div className="text-right">
                     <button className="bg-blue-900 hover:bg-blue-700 text-white py-3 px-5 rounded focus:outline-none focus:shadow-outline ml-auto" type="submit">Submit</button>

@@ -1,5 +1,5 @@
 
-export default async function About() {
+export default async function AboutSection() {
 
     const response = await fetch('http://localhost:4000/api/v1/abouts')
 	const abouts = await response.json()
