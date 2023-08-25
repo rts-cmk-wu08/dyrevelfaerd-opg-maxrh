@@ -2,6 +2,7 @@ import './globals.css'
 import { Oswald, Poppins } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import AuthProvider from './context/AuthContext'
 
 const oswald = Oswald({ 
 	weight: ['400'],
@@ -28,9 +29,13 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={`${oswald.variable} ${poppins.variable}`}>
 			<body>
-				<Header />
-				{children}
-				<Footer />
+				<AuthProvider>
+					<div className='page-container'>
+						<Header />
+						{children}
+						<Footer />
+					</div>
+				</AuthProvider>
 			</body>
 		</html>
 	)

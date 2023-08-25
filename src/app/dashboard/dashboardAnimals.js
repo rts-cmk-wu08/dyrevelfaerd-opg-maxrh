@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 import Image from "next/image"
 
 export default function DashboardAnimals() {
@@ -46,28 +46,34 @@ export default function DashboardAnimals() {
                         <th className="border p-4">Image</th>
                         <th className="border p-4">Description</th>
                         <th className="border p-4">Actions</th>
-
                     </tr>
                 </thead>
 
                 <tbody>
-                    <tr><td colSpan="5">
-                        <button className="w-full text-blue-900 hover:text-blue-400 py-4 px-2 font-medium">New</button>
-                    </td></tr>
+                    <tr>
+                        <td colSpan="5" className="py-2">
+                            <button className="w-full text-blue-900 hover:text-blue-400 py-2 px-2 font-medium">New</button>
+                        </td>
+                    </tr>
                     {animals.map(animal => (
                         <tr key={animal?.id} className="odd:bg-gray-100 text-sm">
                             <td className="border p-4">{animal?.name}</td>
                             <td className="border p-4">{animal?.age}</td>
-                            <td className="border"><Image src={`${animal?.asset.url}`} width={300} height={300} alt={animal?.name} className="w-full h-full object-cover"/></td>
+                            <td className="border p-4">
+                                <Image src={`${animal?.asset.url}`} width={300} height={300} alt={animal?.name} className="w-full h-full object-cover" />
+                            </td>
                             <td className="border p-4">{animal?.description}</td>
                             <td className="border p-4">
-                                <button onClick={() => handleEdit(animal?.id)} className="text-blue-900 hover:text-blue-400 mb-1">Edit</button>
-                                <button onClick={() => handleDelete(animal?.id)} className="text-blue-900 hover:text-blue-400 mb-1">Delete</button>
+                                <div className="flex flex-col sm:flex-row gap-1">
+                                    <button onClick={() => handleEdit(animal?.id)} className="text-blue-900 hover:text-blue-400 mb-1 sm:mb-0">Edit</button>
+                                    <button onClick={() => handleDelete(animal?.id)} className="text-blue-900 hover:text-blue-400 mb-1 sm:mb-0">Delete</button>
+                                </div>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
         </div>
     )
 }
