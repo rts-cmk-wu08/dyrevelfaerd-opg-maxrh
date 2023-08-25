@@ -18,10 +18,10 @@ export default function Header() {
                     <div className="main-menu w-full block lg:flex lg:items-center lg:w-auto">
                         <div className="lg:flex-grow text-gray-600">
                             <Link href="/" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Hjem</Link>
-                            <Link href="#about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Om os</Link>
-                            <Link href="#volunteer" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Bliv Frivillig</Link>
-                            <Link href="#rescue" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Dyr i nød?</Link>
-                            <Link href="#adopt" className="block mt-4 lg:inline-block lg:mt-0">Adopter et dyr</Link>
+                            <Link href="/#about" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Om os</Link>
+                            <Link href="/#volunteer" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Bliv Frivillig</Link>
+                            <Link href="/#rescue" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Dyr i nød?</Link>
+                            <Link href="/#adopt" className="block mt-4 lg:inline-block lg:mt-0">Adopter et dyr</Link>
                         </div>
                     </div>
                 </nav>
