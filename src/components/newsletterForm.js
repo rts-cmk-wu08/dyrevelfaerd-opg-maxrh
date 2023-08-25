@@ -2,7 +2,7 @@
 
 import { useForm } from 'react-hook-form'
 
-const NewsletterForm = () => {
+export default function NewsletterForm() {
 
     const {
         register,
@@ -15,7 +15,7 @@ const NewsletterForm = () => {
     return (
         <div className="w-full max-w-sm ml-auto">
             <form onSubmit={handleSubmit(onSubmit)} className="text-sm">
-                <div className="">
+                <div>
                     <input
                         type="text"
                         placeholder="Email"
@@ -47,5 +47,3 @@ const NewsletterForm = () => {
           
     )
 }
-
-export default NewsletterForm;

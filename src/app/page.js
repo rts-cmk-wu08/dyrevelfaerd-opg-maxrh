@@ -1,21 +1,21 @@
-import Volunteer from '@/components/volunteer-section'
+import VolunteerSection from '@/components/volunteerSection'
 import AboutSection from '@/components/aboutSection'
 import HeroSection from '@/components/heroSection'
-import Footer from '@/components/footer'
-import Newsletter from '@/components/newsletter-section'
-
+import NewsletterSection from '@/components/newsletterSection'
+import AnimalsSection from '@/components/animalsSection'
 
 export default function Home() {
 
 	return (
 		<main className="flex min-h-screen flex-col">
-			<HeroSection id={1}/>
+			<HeroSection id={1} titleSize={'text-6xl'}/>
 			<AboutSection />
-			<Volunteer />
-			<HeroSection id={2}/>
-			<Newsletter />
-			<HeroSection id={3}/>
-			<Footer />
+			<VolunteerSection />
+			<HeroSection id={2} />
+			<NewsletterSection />
+			<HeroSection id={3} />
+			<AnimalsSection />
+
 		</main>
 	)
 }

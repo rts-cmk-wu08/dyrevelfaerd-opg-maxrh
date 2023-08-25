@@ -1,7 +1,7 @@
 
-import NewsletterForm from "./newsletter-form";
+import NewsletterForm from "./newsletterForm"
 
-const Newsletter = () => {
+export default function NewsletterSection() {
 
     return (
         <section className="hero h-80 bg-blue-100" >
@@ -19,4 +19,3 @@ const Newsletter = () => {
     )
 }
 
-export default Newsletter;
