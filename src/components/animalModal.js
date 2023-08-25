@@ -19,6 +19,7 @@ const customStyles = {
         position: 'relative',
         maxWidth: '600px',
         minHeight: '600px',
+        inset: 'auto',
         margin: '0 auto',
         padding: '0',
         border: 'none',
