@@ -4,9 +4,10 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 export default function Login() {
-
+    const router = useRouter();
     const auth = useAuth()
 
     const {
@@ -30,12 +31,10 @@ export default function Login() {
             
             if (res.ok) {
                 const tokenData = await res.json();
-                // Now you can use the token to set the user as authenticated.
                 auth.signin(tokenData, () => {
-                    // Do something after successful login, like redirecting.
-                })
-                console.log(tokenData)
-
+                    // Navigate to the dashboard after successful login
+                    router.push('/dashboard');
+                });
             } else {
                 // Handle failed login, show an error message, etc.
             }
@@ -90,11 +89,9 @@ export default function Login() {
                                 </Link>
                             </div>
                         </form>
-
                             <p className="text-center text-gray-500 text-xs">
                                 &copy;2020 Acme Corp. All rights reserved.
                             </p>
-
                     </div>
                 </div>
             </section>
