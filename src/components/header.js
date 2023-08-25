@@ -23,6 +23,11 @@ export default function Header() {
                             <Link href="/#rescue" className="block mt-4 lg:inline-block lg:mt-0 mr-4">Dyr i nød?</Link>
                             <Link href="/#adopt" className="block mt-4 lg:inline-block lg:mt-0">Adopter et dyr</Link>
                         </div>
+                        <div>
+                            <Link href="/dashboard" className="inline-block text-xs px-4 py-2 leading-none tracking-widest uppercase border rounded text-blue-900 border-blue-200 hover:border-transparent hover:text-teal-500 hover:bg-white ml-4">
+                                Dashboard
+                            </Link>
+                        </div>
                     </div>
                 </nav>
             </div>

@@ -26,6 +26,7 @@ html {
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-end-rgb));
+  width: 100%; height: 100%;
 }
 
 .site-logo, .main-menu,

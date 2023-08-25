@@ -1,14 +1,13 @@
 "use client"
 
 import { useState } from 'react'
-import AnimalModal from './animalModal'
+import Link from 'next/link'
 import Image from 'next/image'
 
 export default function AnimalsSection() {
     const [items, setItems] = useState([]);
     const [displayCount, setDisplayCount] = useState(8); // Initial number of items to display
     const [numItems, setNumItems] = useState(0);
-    const [selectedAnimal, setSelectedAnimal] = useState(null);
 
     async function getData() {
         const res = await fetch('http://localhost:4000/api/v1/animals')
@@ -38,10 +37,11 @@ export default function AnimalsSection() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 mb-10">
                         {displayedItems.map((item) => (
-                            <article 
+                            <Link 
+                                href={`/animal/${item.id}`} 
                                 key={item.id} 
                                 className="flex bg-white rounded overflow-hidden shadow-lg cursor-pointer" 
-                                onClick={() => setSelectedAnimal(item)}
+                                scroll={true}
                             >
                                 <div className="w-1/3">
                                     <Image className="w-full h-full object-cover" width="600" height="330" src={`${item.asset.url}`} alt="Sunset in the mountains" />
@@ -51,7 +51,7 @@ export default function AnimalsSection() {
                                     <p className="text-sm mb-6 whitespace-pre-wrap">{item.description}</p>
                                     <p className='text-xs text-gray-500'>Age: {item.age}</p>
                                 </div>
-                            </article>
+                            </Link>
                         ))}
                     </div>
                     {displayCount < numItems ? (
@@ -73,12 +73,6 @@ export default function AnimalsSection() {
                     }
                 </div>
             </section>
-
-            <AnimalModal
-                isOpen={selectedAnimal !== null}
-                onClose={() => setSelectedAnimal(null)}
-                animal={selectedAnimal}
-            />
         </>
     )
 }
