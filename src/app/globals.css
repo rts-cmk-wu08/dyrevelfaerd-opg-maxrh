@@ -17,6 +17,9 @@
 }
 
 html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+  
   font-family: var(--font-poppins);
 }
 
@@ -25,7 +28,7 @@ body {
   background: rgb(var(--background-end-rgb));
 }
 
+.site-logo, .main-menu,
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-oswald);
-  font-weight: 400;
 }

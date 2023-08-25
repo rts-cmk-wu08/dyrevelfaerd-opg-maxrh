@@ -10,7 +10,7 @@ export default async function AboutSection() {
     const items = await getData()
 
     return (
-        <section className="about-section">
+        <section id="about" className="about-section">
 
             <div className="container max-w-6xl mx-auto py-12 px-6">
                 <div className="flex -mx-6">

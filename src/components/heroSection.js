@@ -1,5 +1,5 @@
 
-export default async function HeroSection({ id, titleSize }) {
+export default async function HeroSection({ id, titleSize, anchor }) {
 
     async function getData() {
         const res = await fetch(`http://localhost:4000/api/v1/adoptsections/${id}`)
@@ -15,7 +15,7 @@ export default async function HeroSection({ id, titleSize }) {
 
     return (
         
-        <section className="hero h-80 bg-gray-100 selection:bg-no-repeat bg-center bg-cover" style={bgImage}>
+        <section id={`${anchor}`} className="hero h-80 bg-gray-100 selection:bg-no-repeat bg-center bg-cover" style={bgImage}>
             
             <div className="container max-w-6xl mx-auto text-white py-16 px-6">
 

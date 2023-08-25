@@ -16,7 +16,7 @@ export default async function VolunteerSection() {
     const items = await getData()
     
     return (
-        <section className="about-section bg-blue-100">
+        <section id="volunteer" className="about-section bg-blue-100">
             <div className="container max-w-6xl mx-auto py-12 px-6">
             <h1 className="text-3xl mb-10 text-blue-900">Bliv frivillig</h1>
 
