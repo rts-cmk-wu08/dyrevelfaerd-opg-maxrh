@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import { useRouter } from 'next/navigation';
 
@@ -53,7 +52,7 @@ export default function Login() {
                             <div className="mb-4">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">Brugernavn</label>
                                 <input 
-                                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                                    className="shadow appearance-none border border-blue-300  rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
                                     id="username" 
                                     type="text" 
                                     placeholder="Brugernavn" 
@@ -66,32 +65,24 @@ export default function Login() {
                             <div className="mb-6">
                                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">Password</label>
                                 <input 
-                                    className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
+                                    className="shadow appearance-none border border-blue-300  rounded w-full py-3 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" 
                                     id="password" 
                                     type="password"
-                                     placeholder="************" 
+                                     placeholder="****" 
                                      {...register('password', {
                                         required: { value: true, message: 'Password Required' },
-                                        minLength: { value: 2, message: 'For kort' },                        
                                     })}
                                 />
-                                <p className="text-red-500 text-xs italic">Vælg venligst et password.</p>
                             </div>
                             <div className="flex items-center justify-between">
                                 <button 
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+                                    className="bg-blue-500 hover:bg-blue-700 text-white text-sm py-3 px-5 rounded focus:outline-none focus:shadow-outline" 
                                     type="submit"
                                 >
                                     Log ind
                                 </button>
-                                <Link className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                                    Opret bruger
-                                </Link>
                             </div>
                         </form>
-                            <p className="text-center text-gray-500 text-xs">
-                                &copy;2020 Acme Corp. All rights reserved.
-                            </p>
                     </div>
                 </div>
             </section>
