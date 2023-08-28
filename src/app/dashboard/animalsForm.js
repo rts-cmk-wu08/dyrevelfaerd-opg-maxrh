@@ -1,17 +1,16 @@
 "use client"
 
 import { useForm } from 'react-hook-form'
+import { ErrorMessage } from "@hookform/error-message"
 import { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth'
 
 export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
-    const [itemId, setItemId] = useState(selectedId)
-    const [isSubmitting, setIsSubmitting] = useState(false)
     const [submissionError, setSubmissionError] = useState(null)
-    const [submissionSuccess, setSubmissionSuccess] = useState(false)
-    const [isDeleting, setIsDeleting] = useState(false)
-    const [isDeleteSuccess, setIsDeleteSuccess] = useState(false);
+    const [deleteState, setDeleteState] = useState({ isDeleting: false, isDeleteSuccessful: false })
+    const [submitState, setSubmitState] = useState({ isSubmitting: false, isSubmitSuccessful: false })
 
+    const [itemId, setItemId] = useState(selectedId)
     const auth = useAuth()
 
     const defaultAssetUrl = 'http://localhost:4000/file-bucket/1589743596506amina.jpg'
@@ -29,7 +28,7 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
 
     const onSubmit = async (data) => {
         try {
-            setIsSubmitting(true)
+            setSubmitState({ ...submitState, isSubmitting: true })
             const url = itemId
                 ? `http://localhost:4000/api/v1/animals/${itemId}` 
                 : 'http://localhost:4000/api/v1/animals'
@@ -51,38 +50,21 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                 },
             })
 
-            if (!res.ok) { throw new Error('An error occurred while processing the request') }
-
-            setSubmissionSuccess(true)
-            setIsSubmitting(false)
+            if (!res.ok) { 
+                throw new Error('An error occurred while processing the request') 
+            }
+            setSubmitState({ ...submitState, isSubmitting: false, isSubmitSuccessful: true })
             onDataUpdate()
         } catch (error) {
             console.error(error)
             setSubmissionError(error.message)
-            setIsSubmitting(false)
+            setSubmitState({ ...submitState, isSubmitting: false, isSubmitSuccessful: false })
         }
     }
 
-    const selectedItem = items.find(item => item.id === itemId)
-
-    useEffect(() => {
-        setItemId(selectedId)
-        setIsDeleteSuccess(false)
-    }, [selectedId]);
-
-    useEffect(() => {   
-         if (selectedItem) {
-            setValue('name', selectedItem?.name)
-            setValue('age', selectedItem?.age)
-            setValue('description', selectedItem?.description)
-            setValue('assetId', selectedItem?.assetId)
-            setValue('asset.url', selectedItem.asset?.url)
-        }
-    }, [selectedItem, setValue])
-
     const handleDelete = async (id) => {
         try {
-            setIsDeleting(true)
+            setDeleteState({ ...deleteState, isDeleting: true })
             const url = `http://localhost:4000/api/v1/animals/${id}`
             const res = await fetch(url, {
                 method: 'DELETE',
@@ -92,25 +74,41 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                 },
             })
             if (!res.ok) { throw new Error('An error occurred while deleting the animal')}
-            setIsDeleting(false)
-            setIsDeleteSuccess(true)
-            reset()
+
+            setDeleteState({ ...deleteState, isDeleting: false, isDeleteSuccessful: true})
             onDataUpdate()
         } catch (error) {
             console.error(error)
-            setIsDeleting(false)
+            setSubmissionError(error.message)
+            setDeleteState({ ...deleteState, isDeleting: false, isDeleteSuccessful: false})
         }
     }
 
     useEffect(() => {
-        if (submissionSuccess || isDeleteSuccess) {
-            const successTimeout = setTimeout(() => {
-                setSubmissionSuccess(false)
-                setIsDeleteSuccess(false)
-            }, 3000)
-            return () => clearTimeout(successTimeout);
+        setItemId(selectedId)
+    }, [selectedId])
+
+    const selectedItem = items.find(item => item.id === itemId)
+
+    useEffect(() => {   
+         if (selectedItem) {
+            setValue('name', selectedItem?.name)
+            setValue('age', selectedItem?.age)
+            setValue('description', selectedItem?.description)
+            setValue('assetId', selectedItem?.assetId)
+            setValue('asset.url', selectedItem.asset?.url)
         }
-    }, [submissionSuccess, isDeleteSuccess]);
+    }, [selectedItem])
+
+    useEffect(() => {
+        if (submitState.isSubmitSuccessful || deleteState.isDeleteSuccessful) {
+            const successTimeout = setTimeout(() => {
+                setSubmitState({ ...submitState, isSubmitSuccessful: false })
+                setDeleteState({ ...deleteState, isDeleteSuccessful: false })
+            }, 3000)
+            return () => clearTimeout(successTimeout)
+        }
+    }, [submitState.isSubmitSuccessful, deleteState.isDeleteSuccessful])
 
     return (
         <div className="bg-slate-100 mx-auto p-6 rounded-md md:p-8" >
@@ -128,8 +126,7 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                                 minLength: { value: 2, message: 'Too Short' },                        
                             })}
                         />
-                        {errors.name && <p className="text-red-500 mt-2">{errors.name.message}</p>}
-
+                        <ErrorMessage errors={errors} name="name" render={({ message }) => <p className='text-red-500 mt-2'>{message}</p>} />
                     </div>
                     <div className="w-24">
                         <input
@@ -143,8 +140,7 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                                 max: { value: 100, message: 'Too old' },                     
                             })}
                         />
-                        {errors.age && <p className="text-red-500 mt-2">{errors.age.message}</p>}
-
+                        <ErrorMessage errors={errors} name="age" render={({ message }) => <p className='text-red-500 mt-2'>{message}</p>} />
                     </div>
                 </div>
                 <div>
@@ -159,28 +155,28 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                             minLength: { value: 10, message: 'Too short' },                        
                         })}
                     />
-                    {errors.description && <p className="text-red-500 mt-2">{errors.description.message}</p>}
+                    <ErrorMessage errors={errors} name="description" render={({ message }) => <p className='text-red-500 mt-2'>{message}</p>} />
                 </div>
                 
                 <div className='form-submit flex'>
                     <button
                         type="submit"
                         className={`inline-block py-3 px-6 rounded-md mr-4 ${
-                            isSubmitting
+                            submitState.isSubmitting
                                 ? 'bg-gray-400 cursor-not-allowed'
-                                : submissionSuccess
+                                : submitState.isSubmitSuccessful
                                 ? 'bg-green-600 text-white'
                                 : itemId
                                 ? 'bg-blue-900 text-white hover:bg-blue-600'
                                 : 'bg-blue-900 text-white hover:bg-blue-600'
                         }`}
-                        disabled={isSubmitting}
+                        disabled={submitState.isSubmitting}
                     >
-                        {isSubmitting
+                        {submitState.isSubmitting
                             ? 'Submitting...'
-                            : submissionSuccess
+                            : submitState.isSubmitSuccessful
                             ? 'Submitted Successfully'
-                            : itemId // Update button text for editing
+                            : itemId 
                             ? 'Update'
                             : 'Add New'
                         }
@@ -190,16 +186,18 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                         <button
                             type="button"
                             className={`inline-block py-3 px-6 rounded-md mr-4 ${
-                                isDeleting
-                                    ? 'bg-gray-400 cursor-not-allowed'
-                                    : 'bg-slate-200 hover:text-white hover:bg-red-600'
+                                deleteState.isDeleting
+                                    ? 'bg-slate-200 cursor-not-allowed'
+                                    : deleteState.isDeleteSuccessful
+                                    ? 'bg-red-900 text-white hover:bg-red-600'
+                                    : 'bg-red-900 text-white hover:bg-red-600'
                             }`}
                             onClick={() => handleDelete(itemId)}
-                            disabled={isDeleting}
+                            disabled={deleteState.isDeleting}
                         >
-                        {isDeleting
+                        {deleteState.isDeleting
                             ? 'Deleting...'
-                            : isDeleteSuccess
+                            : deleteState.isDeleteSuccessful
                             ? 'Deleted Successfully'
                             : 'Delete'
                         }
@@ -209,11 +207,12 @@ export default function AnimalsForm({ items, selectedId, onDataUpdate }) {
                     <button
                         type="button"
                         className={"inline-block py-3 px-6 rounded-md mr-4 bg-slate-200 hover:bg-slate-300" }
-                        disabled={isSubmitting}
                         onClick={() => {
                             clearErrors()
                             reset()
                             setItemId(null)
+                            setDeleteState({ ...deleteState, isDeleting: false, isDeleteSuccessful: false})
+                            setSubmitState({ ...submitState, isSubmitting: false, isSubmitSuccessful: false })
                         }}
                     >
                         Clear
