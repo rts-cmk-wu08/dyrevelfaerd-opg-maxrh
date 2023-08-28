@@ -1,4 +1,4 @@
-import DashboardAnimals from "./dashboardAnimals"
+import TabsContent from "./tabsContent"
 
 import { useState } from 'react'
 import Link from "next/link"
@@ -23,11 +23,11 @@ export default function Tabs() {
 
             <div className="dashboard-content flex flex-col mt-8">
 
-                { activeTab === 'animals' && <DashboardAnimals /> }
-                { activeTab === 'subscribers' && <p>this is subscribers</p> }
-                { activeTab === 'volunteers' && <p>this is volunteers</p> }
-                { activeTab === 'abouts' && <p>this is abouts</p> }
-                { activeTab === 'heroes' && <p>this is heroes</p> }
+                { activeTab === 'animals' && <TabsContent endpoint="animals"/> }
+                { activeTab === 'subscribers' &&  <TabsContent endpoint="subscribers"/> }
+                { activeTab === 'volunteers' && <TabsContent endpoint="volunteers"/> }
+                { activeTab === 'abouts' && <TabsContent endpoint="abouts"/> }
+                { activeTab === 'heroes' && <TabsContent endpoint="adoptsections"/> }
 
             </div>
         </>
