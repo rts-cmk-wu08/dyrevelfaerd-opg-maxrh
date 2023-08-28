@@ -11,8 +11,6 @@ const AuthProvider = ({ children }) => {
         Cookies.get("auth") ? JSON.parse(Cookies.get("auth")) : null
     )
 
-    console.log(user)
-
     const signin = (tokenData, callback) => {
         let userObj = {
             id: tokenData.userId,

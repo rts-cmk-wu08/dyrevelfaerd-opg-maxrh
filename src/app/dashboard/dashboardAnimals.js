@@ -1,79 +1,82 @@
 "use client"
 
-import { useEffect, useState } from 'react'
-import Image from "next/image"
+import useSWR from "swr"
+import Loading from "./loading"
+import { useEffect, useState } from "react"
+import AnimalsForm from "./animalsForm"
 
 export default function DashboardAnimals() {
     const [animals, setAnimals] = useState([]);
+    const [selectedAnimalId, setSelectedAnimalId] = useState(null);
+
+    const fetcher = url => fetch(url).then(r => r.json())
+    const { data, error, isValidating, mutate } = useSWR("http://localhost:4000/api/v1/animals", fetcher)
+
+    // We use a useEffect hook to update the animals state when the server data changes
 
     useEffect(() => {
-        async function getData() {
-            const res = await fetch('http://localhost:4000/api/v1/animals');
-            if (!res.ok) { throw new Error('Failed to fetch data') }
-            const animals = await res.json()
-            setAnimals(animals)
-        }
+        if (data) { setAnimals(data) }
+        if (error) { throw new Error('Failed to fetch data') }
+    }, [data, error])
 
-        getData();
+    // We use mutate to update the data on the server when the animals state updates, so UI gets refreshed with new data immediately
 
-    }, []);
+    const handleDataUpdate = () => { mutate() }
 
-
-    const handleDelete = async (id) => {
-        try {
-            // You can implement the delete API call here
-            console.log('Deleting animal with ID:', id);
-
-        } catch (error) {
-            console.error('Failed to delete animal:', error);
-        }
-    };
+    // In case same animal is selected twice in a row, we reset selectedAnimalId to null and then back to animalId, this insures child component prop still update
 
     const handleEdit = (id) => {
-        // Implement your edit logic here, e.g., navigate to an edit page
-        console.log('Editing animal with ID:', id);
-    };
+        if (selectedAnimalId === id) {
+            setSelectedAnimalId(null);
+            setTimeout(() => {
+                setSelectedAnimalId(id);
+            }, 0);
+        } else {
+            setSelectedAnimalId(id);
+        }
+    }
+
+    // We sort the animals by createdAt date, usually API whould have sort and filter options
+
+    const sortedAnimals = animals.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     return (
-        <div>
-            This is the dashboard animals
-
-            <table className="w-full border">
-                <thead>
-                    <tr className="bg-gray-200 text-left text-sm">
-                        <th className="border p-4">Name</th>
-                        <th className="border p-4">Age</th>
-                        <th className="border p-4">Image</th>
-                        <th className="border p-4">Description</th>
-                        <th className="border p-4">Actions</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td colSpan="5" className="py-2">
-                            <button className="w-full text-blue-900 hover:text-blue-400 py-2 px-2 font-medium">New</button>
-                        </td>
-                    </tr>
-                    {animals.map(animal => (
-                        <tr key={animal?.id} className="odd:bg-gray-100 text-sm">
-                            <td className="border p-4">{animal?.name}</td>
-                            <td className="border p-4">{animal?.age}</td>
-                            <td className="border p-4">
-                                <Image src={`${animal?.asset.url}`} width={300} height={300} alt={animal?.name} className="w-full h-full object-cover" />
-                            </td>
-                            <td className="border p-4">{animal?.description}</td>
-                            <td className="border p-4">
-                                <div className="flex flex-col sm:flex-row gap-1">
-                                    <button onClick={() => handleEdit(animal?.id)} className="text-blue-900 hover:text-blue-400 mb-1 sm:mb-0">Edit</button>
-                                    <button onClick={() => handleDelete(animal?.id)} className="text-blue-900 hover:text-blue-400 mb-1 sm:mb-0">Delete</button>
-                                </div>
-                            </td>
+        <>
+            <div className="dashboard-form mb-10">
+                <AnimalsForm items={animals} selectedId={selectedAnimalId} onDataUpdate={handleDataUpdate} />
+            </div>
+            {isValidating ? ( <Loading /> ) : (
+                <table className="w-full text-sm">
+                    <thead>
+                        <tr className=" text-center">
+                            <th className="p-4 bg-slate-100 rounded-tl-md">Image</th>
+                            <th className="p-4 bg-slate-100">Name</th>
+                            <th className="p-4 bg-slate-100">Age</th>
+                            <th className="p-4 bg-slate-100 text-left">Description</th>
+                            <th className="p-4 bg-slate-100 rounded-tr-md">Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-
-        </div>
+                    </thead>
+                    <tbody>
+                        {sortedAnimals?.map(animal => (
+                            <tr key={animal?.id} className="border-t text-center">
+                                <td className="p-4 ">
+                                    <div className="rounded-full overflow-hidden w-20 h-20">
+                                        <img src={`${animal.asset?.url}`} width={200} height={200} alt={animal.name} className="w-full h-full object-cover" /> 
+                                    </div>
+                                </td>
+                                <td className="p-4 font-medium">{ animal?.name }</td>
+                                <td className="p-4">{ animal?.age }</td>
+                                <td className="p-4 text-left w-full">{ animal?.description }</td>
+                                <td className="p-4">
+                                    <div className="flex flex-col">
+                                        <button onClick={() => handleEdit(animal?.id)} className="text-blue-900 hover:text-blue-400">Edit</button> 
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            )}
+        </>
     )
 }
