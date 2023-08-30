@@ -34,7 +34,7 @@ https://localhost:3000/login
 
 ## Selvvurdering af indsats og gennemførelse
 
-Jeg vurderer min indsats og fuldførelse af opgaven inden for de opstillede rammer som tilfredsstillende. Jeg har investeret lange nætter og bestræbt mig på at opfylde opgavens krav ud over forventning. Desværre må jeg også erkende, at havde misforstået afleveringsfristen og først opdagede sent tirsdag, at det allerede var om eftermiddagen, og vi ikke havde hele aftenen til rådighed (hvor jeg ellers mest arbejder), så tirsdag nåede jeg intet på projektet. Derfor er der visse finpudsings-detaljer, som jeg gerne ville have afsluttet, men ikke fik med. Dette drejer sig primært om tilpasning til mobilvisning, der ikke er konsekvent, samt SEO og en manglende footer-tekst. Generelt ville jeg også gerne have optimeret og ensrettet mere af koden, som f.eks. fetch-funktioner gennem alle komponenter, da jeg først implementerede SWR senere i forløbet. Desuden er 'skeletvisninger' til loading kun implementeret i animalSlider.js og dashboards tabsContent.js tabellen, dette kunne udvides til formulare og andre komponenter og yderligere finpudses.
+Jeg vurderer min indsats og fuldførelse af opgaven inden for de opstillede rammer som tilfredsstillende. Jeg har investeret meget tid og bestræbt mig på at opfylde opgavens krav ud over forventning. Desværre må jeg også erkende, at havde misforstået afleveringsfristen og først opdagede sent tirsdag, at det allerede var om eftermiddagen, og vi ikke havde hele aftenen til rådighed, så tirsdag nåede jeg intet på projektet. Derfor er der visse finpudsnings-detaljer, som jeg gerne ville have afsluttet, men ikke fik med. Dette drejer sig primært om tilpasning til mobilvisning, der ikke er konsekvent, samt SEO og en manglende footer-tekst. Generelt ville jeg også gerne have optimeret og ensrettet mere af koden, som f.eks. fetch-funktioner gennem alle komponenter, da jeg først implementerede SWR senere i forløbet. Desuden er 'skeletvisninger' til loading kun implementeret i animalSlider.js og dashboards tabsContent.js tabellen, dette kunne udvides til formulare og andre komponenter og yderligere finpudses.
 
 
 ## Valg af løsningsmetoder
@@ -147,7 +147,7 @@ next.js er installeret med App Router, Tailwind og Eslint.
 
 ```jsx
 
-// Dette eksempel viser SWR-fetch med auth til vores dashboard-formularer. Funktionen "handleDataUpdate" sendes som prop til TabsForm og bruges til at opdatere cachen med ny data fra serveren ved hjælp af mutate-funktionen, når vi indsender en formular. Dette gør, at den opdaterede data vises med det samme til brugeren.
+// Dette eksempel viser SWR-fetch med auth til vores dashboard-formularer. Funktionen "handleDataUpdate" sendes som prop til TabsForm og bruges til at opdatere client cache med ny data fra serveren ved hjælp af mutate-funktionen, når vi indsender en formular. Dette gør, at den opdaterede data vises med det samme til brugeren.
 
 
     const [items, setItems] = useState([]);
