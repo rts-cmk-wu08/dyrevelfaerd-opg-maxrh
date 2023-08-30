@@ -34,7 +34,7 @@ https://localhost:3000/login
 
 ## Selvvurdering af indsats og gennemførelse
 
-Jeg vurderer min indsats og fuldførelse af opgaven inden for de opstillede rammer som tilfredsstillende. Jeg har investeret meget tid og bestræbt mig på at opfylde opgavens krav ud over forventning. Desværre må jeg også erkende, at havde misforstået afleveringsfristen og først opdagede sent tirsdag, at det allerede var om eftermiddagen, og vi ikke havde hele aftenen til rådighed, så tirsdag nåede jeg intet på projektet. Derfor er der visse finpudsnings-detaljer, som jeg gerne ville have afsluttet, men ikke fik med. Dette drejer sig primært om tilpasning til mobilvisning, der ikke er konsekvent, samt SEO og en manglende footer-tekst. Generelt ville jeg også gerne have optimeret og ensrettet mere af koden, som f.eks. fetch-funktioner gennem alle komponenter, da jeg først implementerede SWR senere i forløbet. Desuden er 'skeletvisninger' til loading kun implementeret i animalSlider.js og dashboards tabsContent.js tabellen, dette kunne udvides til formulare og andre komponenter og yderligere finpudses.
+Jeg vurderer min indsats og fuldførelse af opgaven inden for de opstillede rammer som tilfredsstillende. Jeg har investeret meget tid og bestræbt mig på at opfylde opgavens krav ud over forventning. Desværre må jeg også erkende, at havde misforstået afleveringsfristen og først opdagede sent tirsdag, at det allerede var om eftermiddagen, og vi ikke havde hele aftenen til rådighed, så tirsdag nåede jeg intet på projektet. Derfor er der visse finpudsnings-detaljer, som jeg gerne ville have afsluttet, men ikke fik med. Dette drejer sig primært om tilpasning til mobilvisning, der ikke er konsekvent, samt SEO og en manglende footer-tekst. Generelt ville jeg også gerne have optimeret og ensrettet mere af koden, som f.eks. fetch-funktioner gennem alle komponenter, da jeg først implementerede SWR senere i forløbet. Desuden er 'skeletvisninger' til loading kun implementeret i animalSlider.js og dashboards tabsContent.js tabellen, dette kunne udvides til formularer og andre komponenter og yderligere finpudses.
 
 
 ## Valg af løsningsmetoder
@@ -67,12 +67,12 @@ next.js er installeret med App Router, Tailwind og Eslint.
 
 - **Bliv frivllig cards:** Det udleverede design havde lysegrå flader oven på lyseblå flader, hvilket var uæstetisk og unødvendigt. Jeg har derfor fjernet de grå flader og skabt den samme fornemmelse af en 'card-header' ved at lade billedet strække sig over hele bredden. Til ekstra felt i bunden er den grå flade udskiftet med en svag grå streg.
 
-- **Nyhedsbrevs form:** Form-felter er lagt i kolonne isteder for en række, det ser lidt bedre ud. 
+- **Nyhedsbrevs formular:** Er lavet som kolonne isteder for en række, det ser lidt bedre ud. 
 
 
 ## Særlige punkter til bedømmelse
 
-- **Brug af komponenter:** Koden er organiseret i genanvendelige og velstrukturerede komponenter for at opnå et mere vedligeholdelsesvenlig og skalerbart website. Særligt TabsContent og TabsForm komponenterne er der brugt en del tid på at gøre generiske og dynamiske, så de tilpasser sig forskellige data input. Det betyder vi kun behøver 2 komponenter til at vise alle formulare og tabeller i dashboard.
+- **Brug af komponenter:** Koden er organiseret i genanvendelige og velstrukturerede komponenter for at opnå et mere vedligeholdelsesvenlig og skalerbart website. Særligt TabsContent og TabsForm komponenterne er der brugt en del tid på at gøre generiske og dynamiske, så de tilpasser sig forskellige data input. Det betyder vi kun behøver 2 komponenter til at vise alle formularer og tabeller i dashboard.
 
 - **Data loading med skeleton:** Der er benyttet react-loading-skeleton med et loading.js komponent i dashboard-tabeller, og implementeret inline i animalSlider.js for en mere poleret UI og bedre UX under loading.
 
