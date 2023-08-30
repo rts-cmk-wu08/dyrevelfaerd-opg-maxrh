@@ -67,7 +67,7 @@ next.js er installeret med App Router, Tailwind og Eslint.
 
 - **Bliv frivllig cards:** Det udleverede design havde lysegrå flader oven på lyseblå flader, hvilket var uæstetisk og unødvendigt. Jeg har derfor fjernet de grå flader og skabt den samme fornemmelse af en 'card-header' ved at lade billedet strække sig over hele bredden. Til ekstra felt i bunden er den grå flade udskiftet med en svag grå streg.
 
-- **Nyhedsbrevs form:** Form-felter er lagt i kollonne isteder for en række, det ser lidt bedre ud. 
+- **Nyhedsbrevs form:** Form-felter er lagt i kolonne isteder for en række, det ser lidt bedre ud. 
 
 
 ## Særlige punkter til bedømmelse
@@ -76,7 +76,7 @@ next.js er installeret med App Router, Tailwind og Eslint.
 
 - **Data loading med skeleton:** Der er benyttet react-loading-skeleton med et loading.js komponent i dashboard-tabeller, og implementeret inline i animalSlider.js for en mere poleret UI og bedre UX under loading.
 
-- **Generisk og dynamisk rendring af kolonner og form-felter i dashboard:** Vi bruger funktionen hasData, der tjekker for data til det pågældende form-felt eller kollonne før den vises, samt columnConfigs & fieldsToUpdate arrays, der definere mulige kolloner og form-felter.
+- **Generisk og dynamisk rendring af kolonner og form-felter i dashboard:** Vi bruger funktionen hasData, der tjekker for data til det pågældende form-felt eller kolonne før den vises, samt columnConfigs & fieldsToUpdate arrays, der definere mulige kolonner og form-felter.
 
 - **Brug af SWR og Mutate til datahåndtering i dashboard:** Der er anvendt SWR til at optimere datahentning og håndtering, hvilket bidrager til en mere flydende UX. Igennem mutate-funktionen holdes klienten opdateret, så ny data vises uden at skulle genindlæse browseren.
 
