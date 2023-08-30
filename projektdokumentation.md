@@ -48,11 +48,11 @@ Jeg vurderer min indsats og fuldførelse af opgaven inden for de opstillede ramm
 Anvendt tredjeparts kode er hentet via npm fra de officielle pakker. 
 Alle pakker er open-source, opfylder opgavens krav og er pålidelige.
 
-https://www.npmjs.com/package/swr
-https://www.npmjs.com/package/js-cookie
-https://www.npmjs.com/package/react-hook-form
-https://www.npmjs.com/package/@hookform/error-message
-https://www.npmjs.com/package/react-loading-skeleton
+- https://www.npmjs.com/package/swr
+- https://www.npmjs.com/package/js-cookie
+- https://www.npmjs.com/package/react-hook-form
+- https://www.npmjs.com/package/@hookform/error-message
+- https://www.npmjs.com/package/react-loading-skeleton
 
 next.js er installeret med App Router, Tailwind og Eslint.
 
