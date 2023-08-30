@@ -72,7 +72,7 @@ next.js er installeret med App Router, Tailwind og Eslint.
 
 ## Særlige punkter til bedømmelse
 
-- **Brug af komponenter:** Koden er organiseret i genanvendelige og velstrukturerede komponenter for at opnå et mere vedligeholdelsesvenlig og skalerbart website. Særligt TabsContent og TabsForm komponentern er der brugt en del tid på at gøre generiske og dynamiske, så de tilpasser sig forskellige data input. Det betyder vi kun behøver 2 komponenter til at vise alle forme og tabeller i dashboard.
+- **Brug af komponenter:** Koden er organiseret i genanvendelige og velstrukturerede komponenter for at opnå et mere vedligeholdelsesvenlig og skalerbart website. Særligt TabsContent og TabsForm komponenterne er der brugt en del tid på at gøre generiske og dynamiske, så de tilpasser sig forskellige data input. Det betyder vi kun behøver 2 komponenter til at vise alle formulare og tabeller i dashboard.
 
 - **Data loading med skeleton:** Der er benyttet react-loading-skeleton med et loading.js komponent i dashboard-tabeller, og implementeret inline i animalSlider.js for en mere poleret UI og bedre UX under loading.
 
