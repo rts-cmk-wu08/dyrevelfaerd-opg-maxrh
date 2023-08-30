@@ -1,49 +1,49 @@
-## Projektdokumentation
+# Projektdokumentation
 
-# Opgavens navn: 
+## Opgavens navn: 
 
 Udvikling af website 'Foreningen for Dyrevelfærd'
 
-# Dit fulde navn: 
+## Dit fulde navn: 
 
 Max Robert Hargreave
 
-# Holdnummer: 
+## Holdnummer: 
 
 [Dit Holdnummer]
 
-# Applikation teknologi stack:
+## Applikation teknologi stack:
 
 - Framework: Next.js
 - CSS Framework: Tailwind CSS
 - Tredjepartspakker: swr, js-cookie, react-loading-skeleton, react-hook-form, @hookform/error-message
 
-# URL til sitet:
+## URL til sitet:
 
 https://localhost:3000
 
-# URL til login-formular:
+## URL til login-formular:
 
 https://localhost:3000/login
 
-# Brugernavne og adgangskoder:
+## Brugernavne og adgangskoder:
 
 - Brugernavn: admin
 - Adgangskode: 1234
 
 
-# Selvvurdering af indsats og gennemførelse
+## Selvvurdering af indsats og gennemførelse
 
 Jeg vurderer min indsats og fuldførelse af opgaven inden for de opstillede rammer som tilfredsstillende. Jeg har investeret lange nætter og bestræbt mig på at opfylde opgavens krav ud over forventning. Desværre må jeg også erkende, at havde misforstået afleveringsfristen og først opdagede sent tirsdag, at det allerede var om eftermiddagen, og vi ikke havde hele aftenen til rådighed (hvor jeg ellers mest arbejder), så tirsdag nåede jeg intet på projektet. Derfor er der visse finpudsings-detaljer, som jeg gerne ville have afsluttet, men ikke fik med. Dette drejer sig primært om tilpasning til mobilvisning, der ikke er konsekvent, samt SEO og en manglende footer-tekst. Generelt ville jeg også gerne have optimeret og ensrettet mere af koden, som f.eks. fetch-funktioner gennem alle komponenter, da jeg først implementerede SWR senere i forløbet. Desuden er 'skeletvisninger' til loading kun implementeret i animalSlider.js og dashboards tabsContent.js tabellen, dette kunne udvides til formulare og andre komponenter og yderligere finpudses.
 
 
-# Valg af løsningsmetoder
+## Valg af løsningsmetoder
 
 1. **Next.js:** Jeg valgte Next.js som frameworks for at udnytte server-side rendering og routing-funktionalitet, hvilket resulterer i en hurtigere og mere brugervenlig app.
 2. **Tailwind CSS:** Jeg bruger Tailwind CSS til styling af komponenter, som kommer integreret i next.js og giver en hurtig udviklingsproces og mulighed for nem tilpasning af design. Jeg har benyttet 'copy/paste' princippet for styling af komponenter, der betyder komponentet skal kunne copy/pastes problemfrit til andre next/tailwind projekter og stadig fremstå med korrekt styling uden yderligere css.
 3. **Tredjepartspakker:** Der bruges js-cookie til håndtering af cookies, react-loading-skeleton til at forbedre brugeroplevelsen under loading, react-hook-form og @hookform/error-message til håndtering af formularer og validering, samt SWR til fetch og caching.
 
-# Oprindelse af tredjeparts kode
+## Oprindelse af tredjeparts kode
 
 Anvendt tredjeparts kode er hentet via npm fra de officielle pakker. 
 Alle pakker er open-source, opfylder opgavens krav og er pålidelige.
@@ -57,7 +57,7 @@ https://www.npmjs.com/package/react-loading-skeleton
 next.js er installeret med App Router, Tailwind og Eslint.
 
 
-# Design valg
+## Design valg
 
 - **Skrifttype:** Det udleverede design anvendte Oswald-fonten til alle tekster, hvilket resulterede i dårlig læsevenlighed i brødtekster og alle mindre tekster på siden. Af denne grund har jeg ændret brødteksten til Poppins, der fremstår skarp og læsevenlig på alle skærme og i små størrelser.
 
@@ -70,7 +70,7 @@ next.js er installeret med App Router, Tailwind og Eslint.
 - **Nyhedsbrevs form:** Form-felter er lagt i kollonne isteder for en række, det ser lidt bedre ud. 
 
 
-# Særlige punkter til bedømmelse
+## Særlige punkter til bedømmelse
 
 - **Brug af komponenter:** Koden er organiseret i genanvendelige og velstrukturerede komponenter for at opnå et mere vedligeholdelsesvenlig og skalerbart website. Særligt TabsContent og TabsForm komponentern er der brugt en del tid på at gøre generiske og dynamiske, så de tilpasser sig forskellige data input. Det betyder vi kun behøver 2 komponenter til at vise alle forme og tabeller i dashboard.
 
@@ -83,7 +83,7 @@ next.js er installeret med App Router, Tailwind og Eslint.
 - **Slider/Pager** Enkel slider/pager inklusiv fetch med loading- og fejl-håndtering på 7 linjers kode.
 
 
-# Kodeeksempler
+## Kodeeksempler
 
 ```jsx
 
