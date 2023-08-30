@@ -93,8 +93,8 @@ next.js er installeret med App Router, Tailwind og Eslint.
 
     const columnConfigs = [
         { key: 'asset', label: 'Image' },
-        { key: 'name', label: 'Name', tBodyClass: 'font-medium'   },
-        { key: 'title', label: 'Title', tBodyClass: 'font-medium'   },
+        { key: 'name', label: 'Name', tbodyClass: 'font-medium'   },
+        { key: 'title', label: 'Title', tbodyClass: 'font-medium'   },
         { key: 'email', label: 'Email' },
         { key: 'age', label: 'Age' },
         { key: 'description', label: 'Description', theadClass: 'w-full text-left', tbodyClass: 'text-left' },
